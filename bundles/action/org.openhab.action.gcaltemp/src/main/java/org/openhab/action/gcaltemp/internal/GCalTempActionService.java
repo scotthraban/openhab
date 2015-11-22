@@ -17,15 +17,14 @@ import org.slf4j.LoggerFactory;
 	
 
 /**
- * This class registers an OSGi service for the gcalTemp action.
+ * This class registers an OSGi service for the GCalTemp action.
  * 
  * @author Scott Hraban
  * @since 1.0-SNAPSHOT
  */
-public class gcalTempActionService implements ActionService {
+public class GCalTempActionService implements ActionService {
 
-	private static final Logger logger =
-		LoggerFactory.getLogger(gcalTempActionService.class);
+	private static final Logger logger = LoggerFactory.getLogger(GCalTempActionService.class);
 
 	/**
 	 * The BundleContext. This is only valid when the bundle is ACTIVE. It is set in the activate()
@@ -41,7 +40,7 @@ public class gcalTempActionService implements ActionService {
 	 */
 	/* default */ static boolean isProperlyConfigured = false;
 	
-	public gcalTempActionService() {
+	public GCalTempActionService() {
 	}
 	
 	/**
@@ -91,12 +90,12 @@ public class gcalTempActionService implements ActionService {
 	
 	@Override
 	public String getActionClassName() {
-		return gcalTemp.class.getCanonicalName();
+		return GCalTemp.class.getCanonicalName();
 	}
 
 	@Override
 	public Class<?> getActionClass() {
-		return gcalTemp.class;
+		return GCalTemp.class;
 	}
 	
 }

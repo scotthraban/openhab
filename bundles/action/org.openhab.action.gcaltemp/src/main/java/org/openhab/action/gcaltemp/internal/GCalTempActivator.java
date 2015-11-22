@@ -20,9 +20,9 @@ import org.slf4j.LoggerFactory;
  * @author Scott Hraban
  * @since 1.0-SNAPSHOT
  */
-public final class gcalTempActivator implements BundleActivator {
+public final class GCalTempActivator implements BundleActivator {
 
-	private static Logger logger = LoggerFactory.getLogger(gcalTempActivator.class); 
+	private static Logger logger = LoggerFactory.getLogger(GCalTempActivator.class); 
 	
 	private static BundleContext context;
 	
@@ -31,7 +31,7 @@ public final class gcalTempActivator implements BundleActivator {
 	 */
 	public void start(BundleContext bc) throws Exception {
 		context = bc;
-		logger.debug("gcalTemp action has been started.");
+		logger.debug("GCalTemp action has been started.");
 	}
 
 	/**
@@ -39,7 +39,7 @@ public final class gcalTempActivator implements BundleActivator {
 	 */
 	public void stop(BundleContext bc) throws Exception {
 		context = null;
-		logger.debug("gcalTemp action has been stopped.");
+		logger.debug("GCalTemp action has been stopped.");
 	}
 	
 	/**

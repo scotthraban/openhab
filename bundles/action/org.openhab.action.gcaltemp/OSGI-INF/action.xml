@@ -10,7 +10,7 @@
 
 -->
 <scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.2.0" activate="activate" modified="modified" deactivate="deactivate" name="org.openhab.action.gcaltemp.action" immediate="true" configuration-pid="org.openhab.gcaltemp" configuration-policy="optional">
-	<implementation class="org.openhab.action.gcaltemp.internal.gcalTempActionService" />
+	<implementation class="org.openhab.action.gcaltemp.internal.GCalTempActionService" />
 
 	<service>
 		<provide interface="org.openhab.core.scriptengine.action.ActionService" />

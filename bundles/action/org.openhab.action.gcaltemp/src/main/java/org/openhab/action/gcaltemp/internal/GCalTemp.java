@@ -20,18 +20,18 @@ import org.slf4j.LoggerFactory;
  * @author Scott Hraban
  * @since 1.0-SNAPSHOT
  */
-public class gcalTemp {
+public class GCalTemp {
 
-	private static final Logger logger = LoggerFactory.getLogger(gcalTemp.class);
+	private static final Logger logger = LoggerFactory.getLogger(GCalTemp.class);
 
 	// provide public static methods here
 	
 	// Example
-	@ActionDoc(text="A cool method that does some gcalTemp", 
+	@ActionDoc(text="A cool method that does some GCalTemp", 
 			returns="<code>true</code>, if successful and <code>false</code> otherwise.")
-	public static boolean dogcalTemp(@ParamDoc(name="something", text="the something to do") String something) {
-		if (!gcalTempActionService.isProperlyConfigured) {
-			logger.debug("gcalTemp action is not yet configured - execution aborted!");
+	public static boolean doGCalTemp(@ParamDoc(name="something", text="the something to do") String something) {
+		if (!GCalTempActionService.isProperlyConfigured) {
+			logger.debug("GCalTemp action is not yet configured - execution aborted!");
 			return false;
 		}
 		// now do something cool

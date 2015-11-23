@@ -55,7 +55,16 @@ public class GCalTempActionService implements ActionService {
 		// the configuration is guaranteed not to be null, because the component definition has the
 		// configuration-policy set to require. If set to 'optional' then the configuration may be null
 		
-		// read config parameters here ...
+		try {
+			GCalTemp.getInstance().configure((String) configuration.get("clientId"),
+					(String) configuration.get("clientSecret"),
+					(String) configuration.get("calendarName"),
+					(String) configuration.get("calendarGranularity"),
+					(String) configuration.get("calendarLookahead"));
+		} catch (Exception e) {
+			logger.error("Unable to configure GCalTemp Action", e);
+			return;
+		}
 		
 		isProperlyConfigured = true;
 	}
@@ -65,7 +74,16 @@ public class GCalTempActionService implements ActionService {
 	 * @param configuration Updated configuration properties
 	 */
 	public void modified(final Map<String, Object> configuration) {
-		// update the internal configuration accordingly
+		try {
+			GCalTemp.getInstance().configure((String) configuration.get("clientId"),
+					(String) configuration.get("clientSecret"),
+					(String) configuration.get("calendarName"),
+					(String) configuration.get("calendarGranularity"),
+					(String) configuration.get("calendarLookahead"));
+		} catch (Exception e) {
+			logger.error("Unable to configure GCalTemp Action", e);
+			isProperlyConfigured = false;
+		}
 	}
 	
 	/**

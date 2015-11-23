@@ -73,7 +73,7 @@ public class GCalTemp {
 	private static final String TEMP_DIR = System.getProperty("java.io.tmpdir");
 	private static final String CLIENT_SECRETS = "gcaltemp_client_secrets.json";
 	private static final String TARGETS_FILENAME = "gcaltemp_targets.json";
-	private static final String CREDS_FILESNAME = "gcaltemp_creds";
+	private static final String CREDS_FILENAME = "gcaltemp_creds";
 	private static final List<String> SCOPES = Arrays.asList(CalendarScopes.CALENDAR_READONLY);
 
 	private static GCalTemp INSTANCE;
@@ -100,7 +100,7 @@ public class GCalTemp {
 	private GCalTemp() throws GeneralSecurityException, IOException {
 		jsonFactory = JacksonFactory.getDefaultInstance();
 		httpTransport = GoogleNetHttpTransport.newTrustedTransport();
-		dataStoreFactory = new FileDataStoreFactory(new File(TEMP_DIR, CREDS_FILESNAME));
+		dataStoreFactory = new FileDataStoreFactory(new File(TEMP_DIR, CREDS_FILENAME));
 	}
 
 	protected void configure(String clientId, String clientSecret, String calendarName, String calendarGranularity, String calendarLookahead) throws IOException {
@@ -139,8 +139,8 @@ public class GCalTemp {
 		}
 
 		try {
-			Map<String, Integer> targets = readTargetsFromTargetsFile();
-			return targets.get(String.valueOf(getFloorNow().getMillis()));
+			Map<String, String> targets = readTargetsFromTargetsFile();
+			return Integer.valueOf(targets.get(String.valueOf(getFloorNow().getMillis())));
 		} catch (IOException e) {
 			throw new RuntimeException("Unable to read targets from file", e);
 		}
@@ -173,8 +173,8 @@ public class GCalTemp {
 		}
 	}
 
-	private Map<String, Integer> getTargets(List<Event> events) {
-		Map<String, Integer> tempTargets = new LinkedHashMap<String, Integer>();
+	private Map<String, String> getTargets(List<Event> events) {
+		Map<String, String> tempTargets = new LinkedHashMap<String, String>();
 		if (events.isEmpty()) {
 			return tempTargets;
 		}
@@ -206,7 +206,7 @@ public class GCalTemp {
 		}
 
 		for (Map.Entry<Long, Event> eventTarget : eventTargets.entrySet()) {
-			tempTargets.put(String.valueOf(eventTarget.getKey()), Integer.valueOf(eventTarget.getValue().getSummary()));
+			tempTargets.put(String.valueOf(eventTarget.getKey()), eventTarget.getValue().getSummary());
 		}
 		return tempTargets;
 	}
@@ -240,7 +240,7 @@ public class GCalTemp {
 
 		File targetsFile = new File(TEMP_DIR, TARGETS_FILENAME);
 
-		Map<String, Integer> targets = getTargets(events.getItems());
+		Map<String, String> targets = getTargets(events.getItems());
 		if (!targets.isEmpty()) {
 			OutputStreamWriter writer = null;
 			try {
@@ -260,7 +260,7 @@ public class GCalTemp {
 		}
 	}
 
-	private Map<String, Integer> readTargetsFromTargetsFile() throws IOException {
+	private Map<String, String> readTargetsFromTargetsFile() throws IOException {
 		InputStreamReader reader = null;
 		try {
 			reader = new InputStreamReader(new FileInputStream(new File(TEMP_DIR, TARGETS_FILENAME)));
@@ -287,6 +287,7 @@ public class GCalTemp {
 		.setDataStoreFactory(dataStoreFactory)
 		.setAccessType("offline")
 		.build();
+
 		Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
 		return credential;
 	}

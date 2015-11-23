@@ -80,6 +80,7 @@ public class GCalTempActionService implements ActionService {
 					(String) configuration.get("calendarName"),
 					(String) configuration.get("calendarGranularity"),
 					(String) configuration.get("calendarLookahead"));
+			isProperlyConfigured = true;
 		} catch (Exception e) {
 			logger.error("Unable to configure GCalTemp Action", e);
 			isProperlyConfigured = false;

@@ -272,6 +272,14 @@
     
     <pluginRepositories>
         <pluginRepository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>Maven Plugin Repository</name>
+            <url>http://repo1.maven.org/maven2</url>
+        </pluginRepository>
+        <pluginRepository>
             <id>tycho-snapshots</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </pluginRepository>

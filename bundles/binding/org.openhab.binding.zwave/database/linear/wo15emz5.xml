@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Product>
+    <Model>WO15EMZ5-1</Model>
+    <Label lang="en">Single Wall Outlet</Label>
+
+    <CommandClasses>
+        <Class>
+            <id>0x00</id>             <!-- NO_OPERATION -->
+        </Class>
+        <Class>
+            <id>0x20</id>             <!-- BASIC -->
+        </Class>
+        <Class>
+            <id>0x25</id>             <!-- SWITCH_BINARY -->
+        </Class>
+        <Class>
+            <id>0x27</id>             <!-- SWITCH_ALL -->
+        </Class>
+        <Class>
+            <id>0x2B</id>             <!-- SCENE_ACTIVATION -->
+        </Class>
+        <Class>
+            <id>0x32</id>             <!-- METER -->
+        </Class>
+        <Class>
+            <id>0x70</id>             <!-- CONFIGURATION -->
+        </Class>
+        <Class>
+            <id>0x72</id>             <!-- MANUFACTURER_SPECIFIC -->
+        </Class>
+        <Class>
+            <id>0x85</id>             <!-- ASSOCIATION -->
+        </Class>
+        <Class>
+            <id>0x86</id>             <!-- VERSION -->
+        </Class>
+    </CommandClasses>
+
+    <Configuration>
+
+        <Parameter>
+            <Index>3</Index>
+            <Label lang="en">Night Light</Label>
+            <Type>list</Type>
+            <Default>0</Default>
+            <Minimum>0</Minimum>
+            <Maximum>4</Maximum>
+            <Size>1</Size>
+            <Item>
+                <Value>0</Value>
+                <Label lang="en">Show opposite of powered state</Label>
+            </Item>
+            <Item>
+                <Value>1</Value>
+                <Label lang="en">Show powered state</Label>
+            </Item>
+            <Item>
+                <Value>2</Value>
+                <Label lang="en">On</Label>
+            </Item>
+            <Item>
+                <Value>3</Value>
+                <Label lang="en">Off</Label>
+            </Item>
+            <Item>
+                <Value>4</Value>
+                <Label lang="en">Blink on RF transmission</Label>
+            </Item>
+            <Help><![CDATA[LED mode for attached load
+<p>By default, the LED on the WO15EMZ5-1 will turn OFF when the load attached is turned ON. To make the LED turn ON when the load attached is turned ON, set Parameter 3 to a value of 1.</p>
+            ]]></Help>
+        </Parameter>
+
+        <Parameter>
+            <Index>13</Index>
+            <Label lang="en">Energy Monitoring</Label>
+            <Type>list</Type>
+            <Default>6</Default>
+            <Minimum>0</Minimum>
+            <Maximum>255</Maximum>
+            <Size>1</Size>
+            <Item>
+                <Value>0</Value>
+                <Label lang="en">Disabled</Label>
+            </Item>
+            <Item>
+                <Value>6</Value>
+                <Label lang="en">Default</Label>
+            </Item>
+            <Help><![CDATA[Minutes
+<p>WO15EMZ5-1 reports the total accumulated Kilowatt Hours (kWh) and the instantaneous Watts being consumed by the load.</p> <p>Valid values are 0 - 255, with 0 disabling automatic reporting, and 1 - 255 being the interval in minutes for the automatic reporting interval.</p> <p>Configuration Parameter 13 configures the rate at which the energy readings are reported. If the maximum kWh value that can be reported is reached (21,474 kWh), then it will remain at the maximum level until reset to 0.</p> <p>The Watts reading provides the immediate reading of the power being consumed by the load. The Watts reading takes several seconds to settle so wait a few seconds before reading the energy value when the state of the switch (on / off) has changed.</p> <p>To reset, the total accumulated kWh used by the WO15EMZ5-1 the Z-Wave controller needs to send a reset command at the request of the user. It will also be reset if the WO15EMZ5-1 is excluded from the Z-Wave network.</p>
+            ]]></Help>
+        </Parameter>
+
+    </Configuration>
+
+    <Associations>
+
+        <Group>
+            <Index>1</Index>
+            <Label lang="en">Lifeline</Label>
+            <Maximum>5</Maximum>
+            <SetToController>true</SetToController>
+        </Group>
+
+    </Associations>
+
+</Product>

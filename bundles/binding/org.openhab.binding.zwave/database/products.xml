@@ -62,6 +62,10 @@
                 <Type>5257</Type>
                 <Id>3533</Id>
             </Reference>
+            <Reference>
+                <Type>5753</Type>
+                <Id>3535</Id>
+            </Reference>
             <Model>WS15Z-1</Model>
             <Label lang="en">Wall Mounted Switch</Label>
             <ConfigFile>linear/ws15z-1.xml</ConfigFile>
@@ -150,6 +154,15 @@
             <Model>WT00Z-1</Model>
             <Label lang="en">3-Way Wall Accessory Switch</Label>
             <ConfigFile>linear/wt00z-1.xml</ConfigFile>
+        </Product>
+        <Product>
+            <Reference>
+                <Type>574F</Type>
+                <Id>3535</Id>
+            </Reference>
+            <Model>WO15EMZ5-1</Model>
+            <Label lang="en">Single Wall Outlet</Label>
+            <ConfigFile>linear/wo15emz5.xml</ConfigFile>
         </Product>
     </Manufacturer>
     <Manufacturer>

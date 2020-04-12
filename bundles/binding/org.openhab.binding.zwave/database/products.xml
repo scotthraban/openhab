@@ -157,6 +157,15 @@
         </Product>
         <Product>
             <Reference>
+                <Type>5754</Type>
+                <Id>3530</Id>
+            </Reference>
+            <Model>WT00Z5-1</Model>
+            <Label lang="en">3-Way Wall Accessory Switch</Label>
+            <ConfigFile>linear/wt00z51.xml</ConfigFile>
+        </Product>
+        <Product>
+            <Reference>
                 <Type>574F</Type>
                 <Id>3535</Id>
             </Reference>

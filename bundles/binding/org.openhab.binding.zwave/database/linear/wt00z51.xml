@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Product>
+    <Model>WT00Z5-1</Model>
+    <Label lang="en">3-Way Wall Accessory Switch</Label>
+
+    <CommandClasses>
+        <Class>
+            <id>0x00</id>             <!-- NO_OPERATION -->
+        </Class>
+        <Class>
+            <id>0x20</id>             <!-- BASIC -->
+        </Class>
+        <Class>
+            <id>0x70</id>             <!-- CONFIGURATION -->
+        </Class>
+        <Class>
+            <id>0x72</id>             <!-- MANUFACTURER_SPECIFIC -->
+        </Class>
+        <Class>
+            <id>0x85</id>             <!-- ASSOCIATION -->
+        </Class>
+        <Class>
+            <id>0x86</id>             <!-- VERSION -->
+        </Class>
+    </CommandClasses>
+
+    <Configuration>
+
+        <Parameter>
+            <Index>3</Index>
+            <Label lang="en">Night Light</Label>
+            <Type>list</Type>
+            <Default>0</Default>
+            <Minimum>0</Minimum>
+            <Maximum>4</Maximum>
+            <Size>1</Size>
+            <Item>
+                <Value>0</Value>
+                <Label lang="en">Off when load is on</Label>
+            </Item>
+            <Item>
+                <Value>1</Value>
+                <Label lang="en">On when load is on</Label>
+            </Item>
+            <Item>
+                <Value>2</Value>
+                <Label lang="en">Always on</Label>
+            </Item>
+            <Item>
+                <Value>3</Value>
+                <Label lang="en">Always off</Label>
+            </Item>
+            <Item>
+                <Value>4</Value>
+                <Label lang="en">Blink when transmitting</Label>
+            </Item>
+            <Help><![CDATA[LED mode for attached load
+<p>The Z-Wave BASIC Command Class can control or report the state of LED. The state of the LED depends on the value in Parameter 3.</p> <p>By default, the LED on the WT00Z5-1 will turn OFF when the Associated device is turned ON. To make the LED turn ON when the Associated device is turned ON, set Parameter 3 to a value of 1.</p>
+            ]]></Help>
+        </Parameter>
+
+        <Parameter>
+            <Index>4</Index>
+            <Label lang="en">Invert Switch</Label>
+            <Type>list</Type>
+            <Default>0</Default>
+            <Minimum>0</Minimum>
+            <Maximum>1</Maximum>
+            <Size>1</Size>
+            <Item>
+                <Value>0</Value>
+                <Label lang="en">Normal</Label>
+            </Item>
+            <Item>
+                <Value>1</Value>
+                <Label lang="en">Inverted</Label>
+            </Item>
+            <Help><![CDATA[Allows making the top be "off"
+<p>To change the top of the switch to OFF and the bottom of the switch ON, set Parameter 4 to a value of 1.</p>
+            ]]></Help>
+        </Parameter>
+
+    </Configuration>
+
+    <Associations>
+
+        <Group>
+            <Index>1</Index>
+            <Label lang="en">Lifeline</Label>
+            <Maximum>1</Maximum>
+            <SetToController>true</SetToController>
+        </Group>
+
+        <Group>
+            <Index>2</Index>
+            <Label lang="en">Basic Switches</Label>
+            <Maximum>5</Maximum>
+        </Group>
+
+        <Group>
+            <Index>3</Index>
+            <Label lang="en">Dimmable Switches</Label>
+            <Maximum>5</Maximum>
+        </Group>
+
+    </Associations>
+
+</Product>
